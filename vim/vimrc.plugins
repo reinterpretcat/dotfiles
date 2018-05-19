@@ -1,0 +1,49 @@
+" Plugin bootstrap config. Usage:
+" vim -u bundles.vim +BundleInstall +qall
+
+set nocompatible
+set encoding=utf8
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Theme
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'ntpeters/vim-better-whitespace'
+
+
+" Navigation
+"
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mbbill/undotree'
+set rtp+=~/.fzf
+Plugin 'junegunn/fzf.vim'
+
+
+" Tags
+"
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'majutsushi/tagbar'
+
+
+" Code helpers
+"
+Plugin 'w0rp/ale'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'Valloric/ListToggle'
+
+
+call vundle#end()
+filetype plugin indent on
+

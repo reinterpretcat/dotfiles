@@ -1,0 +1,8 @@
+dotfiles:
+    image: ubuntu:18.04
+    volumes:
+        - ./vim:/dotfiles/vim
+    environment:
+        - DOTFILES_DIR=/dotfiles
+        - TERM=screen-256color
+    entrypoint: /bin/bash
