@@ -4,6 +4,7 @@ set -e
 echo 'Install common dependencies..'
 apt update && apt install -y \
     vim git wget             \
+    clang                    \
     autoconf pkg-config        # for universal ctags
 
 
@@ -37,7 +38,7 @@ if [ ! -d "$YcmDir" ] ; then
     cd $YcmDir
     git submodule update --init --recursive
     # See docs for extra languages support
-    ./install.py
+    ./install.py --clang-completer
     cd ~
 fi;
 
