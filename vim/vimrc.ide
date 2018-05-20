@@ -15,12 +15,21 @@ set smarttab
 set backspace=indent,eol,start
 set ruler
 set number
+
+set wildmenu
 set showcmd
+
+" search
 set incsearch
 set hlsearch
+set smartcase
+set ignorecase
+nnoremap <F3> :set hlsearch!<CR>
+
 set encoding=utf-8 nobomb
 set fileencoding=utf-8
 set laststatus=2
+set nowrap
 
 set cursorline
 set cursorcolumn
@@ -28,6 +37,19 @@ set cursorcolumn
 " Show whitespace characters
 set list
 set listchars=tab:▸\ ,eol:¬
+
+" set the leader key to comma
+let mapleader = ','
+
+" Clipboard
+" copy
+noremap <C-c> "+y
+" paste
+noremap <C-v> "+p
+" cut
+noremap <C-x> "+d
+" paste in insert mode
+inoremap <C-v> <Esc>"+pa
 
 "
 " Theme
@@ -47,6 +69,7 @@ let g:show_spaces_that_precede_tabs=1
 
 "
 " Navigation
+"
 " CtrlP
 let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_working_path_mode = 'ra'
@@ -80,6 +103,7 @@ let g:fzf_colors =
   \ 'header': ['fg', 'Comment'] }
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 
+
 " Nerd-tree settings
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 nmap <silent> <C-n> :NERDTreeFocus<CR>
@@ -90,6 +114,7 @@ let NERDTreeHighlightCursorline = 0
 
 "
 " Static analyzer & code completion
+"
 let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
@@ -106,15 +131,33 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0
 
+let g:clang_format#style_options = {
+	    \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Attach",
+            \ "UseTab" : "Never",
+            \ "IndentWidth" : 4,
+            \ "ColumnLimit" : 100,
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AllowShortFunctionsOnASingleLine" : "true",
+	    \}
+
+let g:clang_format#command = 'clang-format-6.0'
+"map to <Leader>cf in C++ code
+autocmd FileType c,cc,cpp,h,hpp,cu nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cc,cpp,h,hpp,cu vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 "
 " Tag&Search settings
+"
 "let g:gutentags_trace = 1
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 "
 " Various
+"
+"autoread and autowrite
 augroup save
 	au!
 	au FocusLost * wall
@@ -136,6 +179,10 @@ let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightChangedText = 1
 nnoremap <F7> :UndotreeToggle<cr>
 
-" highlighting
-au BufNewFile,BufRead *.cu set ft=cpp
+"
+" Highlighting
 set colorcolumn=80
+" cpp
+au BufNewFile,BufRead *.cu set ft=cpp
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1

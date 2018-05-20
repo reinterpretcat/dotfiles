@@ -1,8 +1,6 @@
-" Plugin bootstrap config. Usage:
-" vim -u bundles.vim +BundleInstall +qall
+" Plugin bootstrap config
 
 set nocompatible
-set encoding=utf8
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -26,19 +24,23 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mbbill/undotree'
+
 set rtp+=~/.fzf
 Plugin 'junegunn/fzf.vim'
 
+" Code specific
+"
+Plugin 'w0rp/ale'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " Tags
 "
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'majutsushi/tagbar'
 
-
-" Code helpers
+" Completion
 "
-Plugin 'w0rp/ale'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'Valloric/ListToggle'
