@@ -77,19 +77,19 @@ function! s:DeleteBuffer()
 endfunction
 " fzf
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header': ['fg', 'Comment'] }
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header': ['fg', 'Comment'] }
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 
 
@@ -99,13 +99,34 @@ nmap <silent> <C-n> :NERDTreeFocus<CR>
 let g:nerdtree_tabs_open_on_console_startup = 1"
 " Fix scrolling lag
 let NERDTreeHighlightCursorline = 0
-" Fix startify
+
+"
+" Startify
 autocmd VimEnter *
-    \    if !argc()
-    \ |    Startify
-    \ |    NERDTree
-    \ |    wincmd w
-    \ |  endif
+            \    if !argc()
+            \ |    Startify
+            \ |    NERDTree
+            \ |    wincmd w
+            \ |  endif
+let g:startify_lists = [
+            \ { 'type': 'dir',       'header': [   'MRU '. getcwd()] },
+            \ { 'type': 'files',     'header': [   'MRU']            },
+            \ { 'type': 'sessions',  'header': [   'Sessions']       },
+            \ { 'type': 'bookmarks', 'header': [   'Bookmarks']      },
+            \ { 'type': 'commands',  'header': [   'Commands']       },
+            \ ]
+let g:startify_skiplist = [
+            \ 'COMMIT_EDITMSG',
+            \ escape(fnamemodify(resolve($VIMRUNTIME), ':p'), '\') .'doc',
+            \ 'bundle/.*/doc',
+            \ ]
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
+let g:startify_custom_header = []
+let g:startify_files_number = 10
+let g:startify_update_oldfiles = 1
+let g:startify_change_to_dir = 0
 
 "
 " Static analyzer & code completion
