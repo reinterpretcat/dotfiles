@@ -50,10 +50,19 @@ if ! [ -x "$(command -v ctags)" ]; then
     ./autogen.sh && ./configure && make && make install
 fi;
 
+# vimproc as requirement for vebugger
+VimProc=~/.vim/bundle/vimproc.vim
+if [ ! -d "$VimProc" ] ; then
+    git clone https://github.com/Shougo/vimproc.vim.git $VimProc
+    cd ~/.vim/bundle/vimproc.vim && make
+fi;
+
+
 echo 'Copy vim configs..'
 cp $DOTFILES_DIR/vim/vimrc.ide ~/.vimrc.ide
 cp $DOTFILES_DIR/vim/vimrc.plugins ~/.vimrc.plugins
 
 echo 'Install vim plugins..'
 vim -u ~/.vimrc.plugins +BundleInstall +qall
+
 

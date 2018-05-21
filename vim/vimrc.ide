@@ -7,7 +7,6 @@ source ~/.vimrc.plugins
 "
 " General settings
 set autoindent
-set smartindent
 set shiftwidth=4
 set softtabstop=4
 set expandtab
@@ -20,10 +19,10 @@ set wildmenu
 set showcmd
 
 " search
-set incsearch
-set hlsearch
-set smartcase
-set ignorecase
+set incsearch                    " act like search in modern browsers
+set hlsearch                     " highlight results
+set smartcase                    " try to be smart about cases
+set ignorecase                   " ignore case
 nnoremap <F3> :set hlsearch!<CR>
 
 set encoding=utf-8 nobomb
@@ -40,16 +39,6 @@ set listchars=tab:▸\ ,eol:¬
 
 " set the leader key to comma
 let mapleader = ','
-
-" Clipboard
-" copy
-noremap <C-c> "+y
-" paste
-noremap <C-v> "+p
-" cut
-noremap <C-x> "+d
-" paste in insert mode
-inoremap <C-v> <Esc>"+pa
 
 "
 " Theme
@@ -78,7 +67,7 @@ let g:ctrlp_extensions = ['line']
 " allow to close buffer
 let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
 function! CtrlPMappings()
-	nnoremap <buffer> <silent> <C-@> :call <sid>DeleteBuffer()<cr>
+	nnoremap <buffer> <silent> <M-d> :call <sid>DeleteBuffer()<cr>
 endfunction
 function! s:DeleteBuffer()
 	let path = fnamemodify(getline('.')[2:], ':p')
@@ -154,6 +143,12 @@ autocmd FileType c,cc,cpp,h,hpp,cu vnoremap <buffer><Leader>cf :ClangFormat<CR>
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
+
+"
+" Build & Debug
+"
+let g:vebugger_leader='<Leader>d'
+
 "
 " Various
 "
@@ -186,3 +181,4 @@ set colorcolumn=80
 au BufNewFile,BufRead *.cu set ft=cpp
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+

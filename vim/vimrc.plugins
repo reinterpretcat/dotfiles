@@ -1,6 +1,7 @@
 " Plugin bootstrap config
 
 set nocompatible
+set encoding=utf-8
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -33,6 +34,11 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'w0rp/ale'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'vhdirk/vim-cmake'
+" Debug
+Plugin 'Shougo/vimproc.vim'
+Plugin 'idanarye/vim-vebugger'
+
 
 " Tags
 "
