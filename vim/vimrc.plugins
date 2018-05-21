@@ -38,7 +38,7 @@ Plugin 'vhdirk/vim-cmake'
 " Debug
 Plugin 'Shougo/vimproc.vim'
 Plugin 'idanarye/vim-vebugger'
-
+Plugin 'artur-shaik/vim-javacomplete2'
 
 " Tags
 "

@@ -117,6 +117,8 @@ let g:lt_height = 10
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0
 
@@ -181,4 +183,5 @@ set colorcolumn=80
 au BufNewFile,BufRead *.cu set ft=cpp
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
-
+" gradle
+au BufNewFile,BufRead *.gradle set filetype=groovy
