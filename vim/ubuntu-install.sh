@@ -19,6 +19,9 @@ echo 'Install plugin dependencies..'
 #
 # powerline
  apt install -y fonts-powerline
+ # TODO font problem
+ # git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+ # ./install.sh
 
 #
 #fzf
