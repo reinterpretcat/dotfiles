@@ -139,10 +139,14 @@ let g:startify_change_to_dir = 0
 " Static analyzer & code completion
 "
 let g:airline#extensions#ale#enabled = 1
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '▲'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_c_build_dir_names = ['build']
+let g:ale_linters = {'cpp': ['clangtidy']}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:lt_location_list_toggle_map = '<leader>l'
@@ -162,6 +166,9 @@ let g:clang_format#detect_style_file = 1
 "map to <Leader>cf in C++ code
 autocmd FileType c,cc,cpp,h,hpp,cu nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cc,cpp,h,hpp,cu vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+"let g:jsx_ext_required = 0
+
 
 "
 " Tag&Search settings
@@ -193,6 +200,7 @@ set nowritebackup
 set autoread
 set autowrite
 set autowriteall
+autocmd FocusGained * checktime
 
 " undo
 set undodir=~/.vim/undo
