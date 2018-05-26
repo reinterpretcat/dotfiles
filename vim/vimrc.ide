@@ -102,7 +102,20 @@ let g:nerdtree_tabs_open_on_console_startup = 1"
 let NERDTreeMinimalUI = 1
 " Fix scrolling lag
 let NERDTreeHighlightCursorline = 0
-
+let g:NERDTreeLimitedSyntax = 1
+" Control highlighting
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeSyntaxEnabledExtensions = [
+            \ 'c', 'h', 'c++', 'cu', 'hpp',
+            \ 'java', 'kt',
+            \ 'js', 'json', 'css',
+            \ 'md'
+            \ ]
+" Folder icons
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"
 " Tab switching
 nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
