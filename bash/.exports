@@ -8,3 +8,5 @@ export HISTSIZE='32768';
 export HISTFILESIZE="${HISTSIZE}";
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
+# do not add commands into history
+export HISTIGNORE="ls:[bf]g:exit:clear:cd:cd -:* --help";
