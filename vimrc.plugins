@@ -1,0 +1,67 @@
+" Plugin bootstrap config
+
+set nocompatible
+set encoding=utf-8
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Theme
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'ntpeters/vim-better-whitespace'
+
+
+" Navigation
+"
+Plugin 'scrooloose/nerdtree'
+Plugin 'mhinz/vim-startify'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mbbill/undotree'
+
+set rtp+=~/.fzf
+Plugin 'junegunn/fzf.vim'
+
+" Helpers
+Plugin 'chrisbra/NrrwRgn'
+
+" Code specific
+"
+Plugin 'w0rp/ale'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'vhdirk/vim-cmake'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+Plugin 'udalov/kotlin-vim'
+
+" Debug
+Plugin 'Shougo/vimproc.vim'
+Plugin 'idanarye/vim-vebugger'
+Plugin 'artur-shaik/vim-javacomplete2'
+
+" Tags
+"
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'majutsushi/tagbar'
+
+" Completion
+"
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'Valloric/ListToggle'
+
+
+call vundle#end()
+filetype plugin indent on
+
