@@ -10,3 +10,6 @@ export HISTFILESIZE="${HISTSIZE}";
 export HISTCONTROL='ignoreboth';
 # do not add commands into history
 export HISTIGNORE="ls:[bf]g:exit:clear:cd:cd -:* --help";
+
+export TODOFILE=~/notes/todos/data
+export TODOHISTORY=~/notes/todos/history

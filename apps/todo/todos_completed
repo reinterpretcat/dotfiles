@@ -1,0 +1,44 @@
+#!/bin/bash -e
+
+usage() {
+command=${0##*/}
+cat <<EOF
+usage: $command [since-datestring]
+Examples:
+    $command
+    $command -1day
+    $command -6hours
+EOF
+}
+
+if [[ -z "$TODOHISTORY" || ! -f "$TODOHISTORY" ]]
+then
+    echo_in_red "${0##*/} requires a TODOHISTORY file"
+    exit 1
+elif [[ $# -gt 1 || "$1" = '--help' ]]
+then
+    usage
+    exit 0
+else
+    if [[ $# -eq 1 ]]
+    then
+        since=$1
+    else
+        since='-1day'
+    fi
+
+    sincefile=$(mktemp)
+    testfile=$(mktemp)
+
+    touch -d "$since" $sincefile
+    (IFS=$'\n'; for l in $(tail -n 25 "$TODOHISTORY" | grep '^-')
+    do
+        touch -d "$(echo $l | cut -d";" -f2)" $testfile
+        if [[ $testfile -nt $sincefile ]]
+        then
+            echo "$l" | cut -d";" -f1 | sed 's/^- /√ /'
+        fi
+    done)
+
+    rm -f $sincefile $testfile
+fi
