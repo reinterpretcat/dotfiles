@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stakeholder Drill"
+  short_description: "Probe designs with evidence-backed stakeholder role-play"
+  default_prompt: "Use $stakeholder-drill to challenge this project through realistic stakeholder conversations, verify capability claims, and summarize actionable findings."
